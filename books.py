@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Float
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # Define the database (SQLite)
@@ -13,7 +13,7 @@ class Book(Base):
     __tablename__ = "books"
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False, unique=True)
-    price = Column(Integer, nullable=False)
+    price = Column(Float, nullable=False)
 
 
 # Create table
@@ -48,7 +48,7 @@ for book in expensive_books:
     print(book.title, book.price)
 
 # Update book price
-session.query(Book).filter(Book.title == "1984").update({"price": "89.50"})
+session.query(Book).filter(Book.title == "1984").update({"price": 89.50})
 session.commit()
 
 # Delete books which cost 99

@@ -5,9 +5,11 @@ lock = threading.Lock()
 
 
 def print_various_things(thread_name):
+
     print(f"\n----- Thread {thread_name} starting -----\n")
 
     # 1. Numbers 1-100
+
     print(f"Thread {thread_name} printing numbers 1-100:")
     for i in range(1, 101, 10):  # Print in groups of 10 to save space
         print(f"{i}-{i + 9}", end=" ")
@@ -21,6 +23,7 @@ def print_various_things(thread_name):
         "Don't watch the clock; do what it does. Keep going.",
         "The best way to predict the future is to create it."
     ]
+
     print(f"Thread {thread_name} sharing an inspirational quote:")
     print(f'"{random.choice(quotes)}"\n')
 
@@ -32,6 +35,7 @@ def print_various_things(thread_name):
         "A neutron star is so dense that a teaspoon would weigh 6 billion tons.",
         "The footprints on the Moon will stay there for at least 100 million years."
     ]
+
     print(f"Thread {thread_name} sharing a space fact:")
     print(f"{random.choice(space_facts)}\n")
 
@@ -41,9 +45,9 @@ def print_various_things(thread_name):
         "Washington D.C., USA", "Brasília, Brazil", "Moscow, Russia",
         "London, UK", "Paris, France", "Berlin, Germany", "Rome, Italy"
     ]
-    print(f"Thread {thread_name} listing some capital cities:")
 
     with lock:
+        print(f"Thread {thread_name} listing some capital cities:")
         for city in capitals[:5]:  # Just show 5 capitals
             print(f"- {city}")
         print("")
@@ -54,6 +58,7 @@ def print_various_things(thread_name):
         "C# (2000)", "Ruby (1995)", "Go (2009)",
         "Swift (2014)", "Kotlin (2011)", "TypeScript (2012)"
     ]
+
     print(f"Thread {thread_name} sharing programming language creation years:")
     for lang in random.sample(languages, 5):  # Random 5 languages
         print(f"- {lang}")
